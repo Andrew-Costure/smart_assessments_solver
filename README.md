@@ -21,3 +21,6 @@ Windows (PowerShell):
 python -m venv .venv
 .\.venv\Scripts\Activate.psl
 ```
+
+## Important! Populate `.env` file
+Populate your `.env` file with either `USERNAME` and `PASSWORD` (your username and password on the portal) or `COOKIES_FILE` (Copy Cookies using Cookie-Editor Extension as json and paste it in a file. Give the path to that file either relative or absolute)
