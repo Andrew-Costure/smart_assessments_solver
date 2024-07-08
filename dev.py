@@ -26,3 +26,4 @@ def init(browser="chrome"):
             cookies = json.load(cookiefile)
 
     login(driver, USERNAME, PASSWORD, cookies)
+    return driver
