@@ -22,8 +22,8 @@ def init(browser="chrome"):
 
     cookies = None
     if COOKIE_FILE:
-        with open(COOKIE_FILE, 'r') as cookiefile:
-            cookies = json.load(cookiefile)
+        with open(COOKIE_FILE, 'r', encoding='utf-8') as cookie_file:
+            cookies = json.load(cookie_file)
 
     login(driver, USERNAME, PASSWORD, cookies)
     return driver
