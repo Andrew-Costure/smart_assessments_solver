@@ -2,6 +2,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver as FirefoxWebDriver
 from selenium.webdriver.chrome.webdriver import WebDriver as ChromeWebDriver
 from selenium.webdriver.support.ui import WebDriverWait
 
+from .utils import cleanup_cookie
 
 def login(driver: FirefoxWebDriver | ChromeWebDriver,
           username: str | None = None,
@@ -36,15 +37,5 @@ def login(driver: FirefoxWebDriver | ChromeWebDriver,
         password_field.send_keys(password)
         password_field.send_keys(Keys.RETURN)
         WebDriverWait(driver, 20).until(EC.url_to_be(page_dashboard))
-
-def cleanup_cookie(cookie: dict[str, str]):
-    if (
-        cookie["sameSite"] == "unspecified"
-        or cookie["sameSite"] == "no_restriction"
-    ):
-        cookie["sameSite"] = "None"
-    elif cookie["sameSite"] == "lax":
-        cookie["sameSite"] = "Lax"
-    elif cookie["sameSite"] == "strict":
-        cookie["sameSite"] = "Strict"
-    return cookie
+    else:
+        raise NotImplementedError("You must provide a username and password OR cookies to log into the portal")
