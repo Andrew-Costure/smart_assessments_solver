@@ -1,1 +1,1 @@
-# Scraper package
+#scraper/__init__.py
