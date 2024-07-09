@@ -8,9 +8,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from .utils import cleanup_cookie
 
 def login(driver: FirefoxWebDriver | ChromeWebDriver,
+          landing_url: str,
           username: str | None = None,
           password: str | None = None,
-          cookies: list[dict[str, str]] = None) -> None:
+          cookies: list[dict[str, str]] = None,
+          ) -> None:
     """
     Logs in to portal.alnafi.com
 
@@ -22,14 +24,13 @@ def login(driver: FirefoxWebDriver | ChromeWebDriver,
     """
     page_login = "https://portal.alnafi.com/users/sign_in"
     page_404 = "https://portal.alnafi.com/404"
-    page_dashboard = "https://portal.alnafi.com/enrollments"
 
     if cookies: # cookies will be preferred
         driver.get(page_404) # cookies load best on a 404 page
         for cookie in cookies:
             cookie = cleanup_cookie(cookie)
             driver.add_cookie(cookie)
-        driver.get(page_dashboard)
+        driver.get(landing_url)
 
     elif username and password:
         print("Using Username and Password. Manual Intervention might be required!")
@@ -39,6 +40,6 @@ def login(driver: FirefoxWebDriver | ChromeWebDriver,
         username_field.send_keys(username)
         password_field.send_keys(password)
         password_field.send_keys(Keys.RETURN)
-        WebDriverWait(driver, 20).until(EC.url_to_be(page_dashboard))
+        WebDriverWait(driver, 20).until(EC.url_to_be(landing_url))
     else:
         raise NotImplementedError("You must provide a username and password OR cookies to log into the portal")
