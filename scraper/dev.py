@@ -17,11 +17,12 @@ def init(browser="chrome"):
     else:
         raise NotImplementedError("It supports firefox and chrome only")
     
+    driver.implicitly_wait(10)  # should be no more than 10 seconds
+    
     COOKIE_FILE = Path(os.getenv("COOKIE_FILE")).absolute()
     USERNAME=os.getenv("USERNAME")
     PASSWORD=os.getenv("PASSWORD")
 
-    print(COOKIE_FILE, USERNAME, PASSWORD)
     cookies = None
     if COOKIE_FILE:
         with open(COOKIE_FILE, 'r', encoding='utf-8') as cookie_file:
