@@ -43,6 +43,8 @@ def login(driver: FirefoxWebDriver | ChromeWebDriver,
         username_field.send_keys(username)
         password_field.send_keys(password)
         password_field.send_keys(Keys.RETURN)
-        WebDriverWait(driver, 20).until(EC.url_to_be(landing_url))
+
     else:
         raise ValueError("You must provide a username and password OR cookies to log into the portal")
+
+    WebDriverWait(driver, 20).until(EC.url_to_be(landing_url))
