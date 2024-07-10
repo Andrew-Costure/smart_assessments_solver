@@ -5,11 +5,12 @@ import json
 from dotenv import load_dotenv
 from selenium import webdriver
 
-from scraper.login import login
+from .login import login
 
-def init(browser="chrome"):
+
+def init(browser="chrome", landing_url: str = "https://portal.alnafi.com/enrollments"):
     load_dotenv()
-    
+
     if browser == "firefox":
         driver = webdriver.Firefox()
     elif browser == "chrome":
@@ -28,5 +29,5 @@ def init(browser="chrome"):
         with open(COOKIE_FILE, 'r', encoding='utf-8') as cookie_file:
             cookies = json.load(cookie_file)
 
-    login(driver, USERNAME, PASSWORD, cookies)
+    login(driver, landing_url, USERNAME, PASSWORD, cookies)
     return driver
