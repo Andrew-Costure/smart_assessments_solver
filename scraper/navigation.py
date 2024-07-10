@@ -43,7 +43,8 @@ def get_assessment_url(driver: FirefoxWebDriver | ChromeWebDriver, name: str):
         if title == name:
             return url
 
-    # TODO: Handle the case when the results are spanned across multiple pages (i.e. the courses matching the name are more than 6)
+    # TODO: Handle the case when the results are spanned across multiple pages
+    # (i.e. the courses matching the name are more than 6)
 
     # If the title doesn't match then raise a ValueError
     logger.error("Assessment Not Found! Exiting...")
