@@ -6,6 +6,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 from .utils import cleanup_cookie
+from .utils import logger_setup
+
+logger = logger_setup(__name__)
 
 def login(driver: FirefoxWebDriver | ChromeWebDriver,
           username: str | None = None,
@@ -32,7 +35,7 @@ def login(driver: FirefoxWebDriver | ChromeWebDriver,
         driver.get(page_dashboard)
 
     elif username and password:
-        print("Using Username and Password. Manual Intervention might be required!")
+        logger.info("Using Username and Password. Manual Intervention might be required!")
         driver.get(page_login)
         username_field = driver.find_element(By.NAME, "user[email]")
         password_field = driver.find_element(By.NAME, "user[password]")
@@ -41,4 +44,4 @@ def login(driver: FirefoxWebDriver | ChromeWebDriver,
         password_field.send_keys(Keys.RETURN)
         WebDriverWait(driver, 20).until(EC.url_to_be(page_dashboard))
     else:
-        raise NotImplementedError("You must provide a username and password OR cookies to log into the portal")
+        raise ValueError("You must provide a username and password OR cookies to log into the portal")
