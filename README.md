@@ -22,5 +22,18 @@ python -m venv .venv
 .\.venv\Scripts\Activate.psl
 ```
 
+Then install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+Now you are ready to run main script:
+```bash
+python main.py
+```
+
+Remember to always run `main.py`. Make necessary change in it if you want to solve different problems.
+
+
 ## Important! Populate `.env` file
 Populate your `.env` file with either `USERNAME` and `PASSWORD` (your username and password on the portal) or `COOKIES_FILE` (Copy Cookies using Cookie-Editor Extension as json and paste it in a file. Give the path to that file either relative or absolute)
