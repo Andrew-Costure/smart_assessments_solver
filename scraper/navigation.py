@@ -6,7 +6,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.ui import WebDriverWait
 
 
-from . import dashboard
+from . import dashboard, course
 from .utils import logger_setup, encoded_url
 
 logger = logger_setup(__name__)
@@ -17,25 +17,27 @@ def open_assessment(
     name: str | None = None,
     url: str | None = None,
 ):
+    # 20 seconds is enough to wait for something to load or hide
+    wait = WebDriverWait(driver, 20)
+
     if not url and name:
-        search_assessment(driver, name)
-        url = get_assessment_url(driver, name)
+        search_assessment(driver, name, wait)
+        url = get_assessment_url(driver, name, wait)
     elif not name:
         raise ValueError("Either name or url must be provided")
 
     driver.get(url)
-    WebDriverWait(driver, 20).until(EC.url_to_be(url))
+    wait.until(EC.url_to_be(url))
+    wait.until(EC.invisibility_of_element(course.LOADER))
 
-def search_assessment(driver: FirefoxWebDriver | ChromeWebDriver, name: str):
+def search_assessment(driver: FirefoxWebDriver | ChromeWebDriver, name: str, wait: WebDriverWait):
     driver.find_element(*dashboard.SEARCH).send_keys(name)
     driver.find_element(*dashboard.SEARCH).send_keys(Keys.RETURN)
-    WebDriverWait(driver, 20).until(EC.url_to_be(encoded_url(name)))
+    wait.until(EC.url_to_be(encoded_url(name)))
 
 
-def get_assessment_url(driver: FirefoxWebDriver | ChromeWebDriver, name: str):
-    WebDriverWait(driver, 20).until(
-        EC.presence_of_element_located(dashboard.COURSE_CARDS)
-    )
+def get_assessment_url(driver: FirefoxWebDriver | ChromeWebDriver, name: str, wait: WebDriverWait):
+    wait.until(EC.presence_of_element_located(dashboard.COURSE_CARDS))
 
     course_cards = driver.find_elements(*dashboard.COURSE_CARDS)
 
