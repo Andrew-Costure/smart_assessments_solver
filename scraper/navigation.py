@@ -8,12 +8,13 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from . import dashboard, course
 from .utils import logger_setup, encoded_url
+from .types import WebDriver
 
 logger = logger_setup(__name__)
 
 
 def open_assessment(
-    driver: FirefoxWebDriver | ChromeWebDriver,
+    driver: WebDriver,
     name: str | None = None,
     url: str | None = None,
 ):
@@ -30,13 +31,13 @@ def open_assessment(
     wait.until(EC.url_to_be(url))
     wait.until(EC.invisibility_of_element(course.LOADER))
 
-def search_assessment(driver: FirefoxWebDriver | ChromeWebDriver, name: str, wait: WebDriverWait):
+def search_assessment(driver: WebDriver, name: str, wait: WebDriverWait):
     driver.find_element(*dashboard.SEARCH).send_keys(name)
     driver.find_element(*dashboard.SEARCH).send_keys(Keys.RETURN)
     wait.until(EC.url_to_be(encoded_url(name)))
 
 
-def get_assessment_url(driver: FirefoxWebDriver | ChromeWebDriver, name: str, wait: WebDriverWait):
+def get_assessment_url(driver: WebDriver, name: str, wait: WebDriverWait):
     wait.until(EC.presence_of_element_located(dashboard.COURSE_CARDS))
 
     course_cards = driver.find_elements(*dashboard.COURSE_CARDS)

@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
+from .types import WebDriver
+
 # ============ LOCATORS ===================
 LOADER = (By.ID, "loader-1")
 COURSES = (
@@ -14,7 +16,7 @@ LESSON_TYPE = (By.XPATH, "a/div[2]/div")
                 # .lower()
 
 # ============ FUNCTIONS ===================
-def get_lessons(driver, _type: str = "assessments") -> list[WebElement]:
+def get_lessons(driver: WebDriver, _type: str = "assessments") -> list[WebElement]:
     lessons = []
     for course in driver.find_elements(*COURSES):
         all_lessons = course.find_elements(*LESSONS)

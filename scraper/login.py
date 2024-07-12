@@ -7,10 +7,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 from .utils import cleanup_cookie
 from .utils import logger_setup
+from .types import WebDriver
 
 logger = logger_setup(__name__)
 
-def login(driver: FirefoxWebDriver | ChromeWebDriver,
+def login(driver: WebDriver,
           landing_url: str,
           username: str | None = None,
           password: str | None = None,
