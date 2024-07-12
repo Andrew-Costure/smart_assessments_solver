@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 
-from .types import WebDriver
+from .types import WebDriver, WebElement
 
 # ============ LOCATORS ===================
 LOADER = (By.ID, "loader-1")

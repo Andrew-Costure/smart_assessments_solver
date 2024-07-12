@@ -2,13 +2,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.webdriver import WebDriver as FirefoxWebDriver
 from selenium.webdriver.chrome.webdriver import WebDriver as ChromeWebDriver
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.ui import WebDriverWait
 
 
 from . import dashboard, course
 from .utils import logger_setup, encoded_url
-from .types import WebDriver
+from .types import WebDriver, WebElement
 
 logger = logger_setup(__name__)
 
