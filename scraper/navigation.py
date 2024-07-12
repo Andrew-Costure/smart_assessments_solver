@@ -1,14 +1,15 @@
+import sys
+
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
 
 from . import dashboard, course
 from .utils import logger_setup, encoded_url
 from .types import WebDriver, WebElement
 
-logger = logger_setup(__name__)
 
+logger = logger_setup(__name__)
 
 def open_assessment(
     driver: WebDriver,
@@ -23,10 +24,11 @@ def open_assessment(
         url = get_assessment_url(driver, name, wait)
     elif not name:
         raise ValueError("Either name or url must be provided")
-
-    driver.get(url)
-    wait.until(EC.url_to_be(url))
-    wait.until(EC.invisibility_of_element(course.LOADER))
+    if not url:
+        driver.get(url)
+        wait.until(EC.url_to_be(url))
+        wait.until(EC.invisibility_of_element(course.LOADER))
+    sys.exit(1)
 
 def search_assessment(driver: WebDriver, name: str, wait: WebDriverWait):
     driver.find_element(*dashboard.SEARCH).send_keys(name)
