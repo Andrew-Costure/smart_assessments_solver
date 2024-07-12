@@ -36,4 +36,13 @@ Remember to always run `main.py`. Make necessary change in it if you want to sol
 
 
 ## Important! Populate `.env` file
-Populate your `.env` file with either `USERNAME` and `PASSWORD` (your username and password on the portal) or `COOKIES_FILE` (Copy Cookies using Cookie-Editor Extension as json and paste it in a file. Give the path to that file either relative or absolute)
+
+```bash
+cp sample.env .env
+```
+
+Now, open `.env` with any text editor and populate your
+`.env` file with either `USERNAME` and `PASSWORD`
+(your username and password on the portal) or `COOKIES_FILE`
+(Copy Cookies using Cookie-Editor Extension as json
+and paste it in a file. Give the path to that file either relative or absolute)
