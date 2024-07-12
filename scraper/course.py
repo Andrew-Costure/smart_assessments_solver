@@ -11,9 +11,6 @@ COURSES = (
 )
 LESSONS = (By.XPATH, "div[2]/ul/li")
 LESSON_TYPE = (By.XPATH, "a/div[2]/div")
-                # .text.splitlines()[0]
-                # .strip()
-                # .lower()
 
 # ============ FUNCTIONS ===================
 def get_lessons(driver: WebDriver, _type: str = "assessments") -> list[WebElement]:
@@ -21,6 +18,8 @@ def get_lessons(driver: WebDriver, _type: str = "assessments") -> list[WebElemen
     for course in driver.find_elements(*COURSES):
         all_lessons = course.find_elements(*LESSONS)
         for lesson in all_lessons:
-            if lesson.find_element(*LESSON_TYPE).text == _type:
+            # remove extra characters like diamonds etc.
+            lesson_type = lesson.find_element(*LESSON_TYPE).text.splitlines()[0].strip()
+            if  lesson_type.lower() == _type.lower():
                 lessons.append(lesson)
     return lessons
