@@ -13,9 +13,3 @@ def solve_quiz(question):
         stream=False
     )
     return answer["message"]["content"]
-
-# if __name__ == "__main__":
-#     answer = solve_quiz(
-#         "During a port scan, Susan discovers a system running services on TCP and UDP 137-139 and TCP 445, as well as TCP 1433. What type of system is she likely to find if she connects to the machine? [['A', 'A Linux email server'], ['B', ' A Windows SQL server'], ['C', 'A Linux file server'], ['D', 'A Windows workstation']]"
-#     )
-#     print(answer)
