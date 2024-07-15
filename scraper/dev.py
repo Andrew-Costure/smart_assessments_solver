@@ -2,14 +2,12 @@ import os
 from pathlib import Path
 import json
 
-from dotenv import load_dotenv
 from selenium import webdriver
 
 from .login import login
 
 
 def init(browser="chrome", landing_url: str = "https://{PORTAL_URL}/enrollments"):
-    load_dotenv()
 
     if browser == "firefox":
         driver = webdriver.Firefox()

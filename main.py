@@ -1,10 +1,13 @@
 from selenium.webdriver.support.ui import WebDriverWait
+from dotenv import load_dotenv
 
 from scraper.dev import init
 from scraper.assessment import solve
 from scraper.utils import logger_setup
 
 logger = logger_setup(__name__)
+
+load_dotenv()
 
 if __name__ == "__main__":
     # this is just to show how it can work
