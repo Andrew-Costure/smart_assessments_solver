@@ -10,4 +10,4 @@ COURSE_LINK = (By.CSS_SELECTOR, "a.course-card__resume")
 # This helps in checking whether the browser has reached a specific url or not
 # The encoded text is used to search for courses with certain keywords in their names
 # It is simply a representation of the query made by the portal itself
-SEARCH_URL = "https://portal.alnafi.com/enrollments?q={encoded_search}&status=all"
+SEARCH_URL = "https://{PORTAL_URL}/enrollments?q={encoded_search}&status=all"

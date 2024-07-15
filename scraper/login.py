@@ -16,7 +16,7 @@ def login(driver: WebDriver,
           cookies: list[dict[str, str]] = None,
           ) -> None:
     """
-    Logs in to portal.alnafi.com
+    Logs in to portal
 
     - If cookies has been passed, username and password will be ignored, else username and password will be used to login to the portal.
     
@@ -24,8 +24,8 @@ def login(driver: WebDriver,
 
     return None
     """
-    page_login = "https://portal.alnafi.com/users/sign_in"
-    page_404 = "https://portal.alnafi.com/404"
+    page_login = "https://{PORTAL_URL}/users/sign_in"
+    page_404 = "https://{PORTAL_URL}/404"
 
     if cookies: # cookies will be preferred
         driver.get(page_404) # cookies load best on a 404 page

@@ -8,7 +8,7 @@ from selenium import webdriver
 from .login import login
 
 
-def init(browser="chrome", landing_url: str = "https://portal.alnafi.com/enrollments"):
+def init(browser="chrome", landing_url: str = "https://{PORTAL_URL}/enrollments"):
     load_dotenv()
 
     if browser == "firefox":
