@@ -1,8 +1,9 @@
 # Smart Assessments Solver
-
+> # ⚠️ *DISCLAIMER:* This script is intended for educational purposes only.
+We are not responsible for any harm or damages caused by this script. Use at your own risk.
 ## How to setup on your PC
 
-First of all clone this repo to your computer:
+First of all, clone this repo to your computer:
 
 ```bash
 git clone https://github.com/sdhmh/smart-assessments-solver
@@ -46,3 +47,4 @@ Now, open `.env` with any text editor and populate your
 (your username and password on the portal) or `COOKIES_FILE`
 (Copy Cookies using Cookie-Editor Extension as json
 and paste it in a file. Give the path to that file either relative or absolute)
+
