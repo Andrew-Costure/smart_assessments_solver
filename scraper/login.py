@@ -1,3 +1,5 @@
+import os
+
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
@@ -24,8 +26,10 @@ def login(driver: WebDriver,
 
     return None
     """
-    page_login = "https://{PORTAL_URL}/users/sign_in"
-    page_404 = "https://{PORTAL_URL}/404"
+    page_login = "https://{PORTAL_URL}/users/sign_in".format(
+        PORTAL_URL=os.environ["PORTAL_URL"]
+    )
+    page_404 = "https://{PORTAL_URL}/404".format(PORTAL_URL=os.environ["PORTAL_URL"])
 
     if cookies: # cookies will be preferred
         driver.get(page_404) # cookies load best on a 404 page

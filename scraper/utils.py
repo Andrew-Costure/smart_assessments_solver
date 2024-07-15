@@ -1,3 +1,4 @@
+import os
 import logging
 from urllib.parse import quote
 
@@ -40,5 +41,5 @@ def logger_setup(name):
 
 def encoded_url(name: str):
     encoded_search = quote(name).replace("%20", "+")
-    encoded_url = dashboard.SEARCH_URL.format(encoded_search=encoded_search)
+    encoded_url = dashboard.SEARCH_URL.format(encoded_search=encoded_search, PORTAL_URL=os.environ["PORTAL_URL"])
     return encoded_url
