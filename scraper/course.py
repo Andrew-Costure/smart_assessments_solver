@@ -6,13 +6,10 @@ from .utils import logger_setup
 from .types import WebDriver, WebElement
 
 # ============ LOCATORS ===================
-LOADER = (By.ID, "loader-1")
-COURSES = (
-    By.CSS_SELECTOR,
-    ".course-player__chapters-menu .course-player__chapters-item",
-)
-LESSONS = (By.CSS_SELECTOR, ".course-player__content-item")
-LESSON_TYPE = (By.CLASS_NAME, "content-item__details")
+LOADER = ()
+COURSES = ()
+LESSONS = ()
+LESSON_TYPE = ()
 
 
 # ============ SETUP ---------------------

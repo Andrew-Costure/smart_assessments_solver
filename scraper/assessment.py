@@ -10,22 +10,16 @@ from solvers import solver
 from .utils import logger_setup
 from .types import WebElement
 
-LOADER = (By.ID, "loader-1")
-RETAKE_BUTTON = (By.CLASS_NAME, "_button--knockout_142a8m")
-QUIZ_AREA_SELECTOR = (By.CLASS_NAME, "course-player__quiz")
-TOTAL_QUIZZES = (By.CLASS_NAME, "course-player__proctor-progress")
-QUIZ_QUESTION = (By.CSS_SELECTOR, "span.course-player__quiz__prompt")
-QUIZ_OPTIONS = (
-    By.CSS_SELECTOR,
-    ".course-player__quiz__choices .course-player__interactive-checkbox",
-)
-QUIZ_SUBMIT = (By.CSS_SELECTOR, ".course-player__interactive-navigation button")
-CHECK_ANSWER_CORRECT = (
-    By.XPATH,
-    '//div[contains(@class, "course-player__interactive-checkbox") and .//i[contains(@class, "toga-icon-circle-fill-check")]]',
-)
-EXPLANATION = (By.CSS_SELECTOR, ".course-player__quiz__explanation-text")
-QUIZ_LOADER = (By.CLASS_NAME, "course-player__spinner-container")
+LOADER = ()
+RETAKE_BUTTON = ()
+QUIZ_AREA_SELECTOR = ()
+TOTAL_QUIZZES = ()
+QUIZ_QUESTION = ()
+QUIZ_OPTIONS = ()
+QUIZ_SUBMIT = ()
+CHECK_ANSWER_CORRECT = ()
+EXPLANATION = ()
+QUIZ_LOADER = ()
 
 # ======= SETUP LOGGER =======
 logger = logger_setup(__name__)
