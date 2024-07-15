@@ -24,16 +24,19 @@ def open_assessment(
         url = get_assessment_url(driver, name, wait)
     elif not name:
         raise ValueError("Either name or url must be provided")
-    if not url:
+    
+    if url:
         driver.get(url)
         wait.until(EC.url_to_be(url))
         wait.until(EC.invisibility_of_element(course.LOADER))
-    sys.exit(1)
+    else:
+        logger.error("Could not find assessment with name: %s", name)
+        sys.exit(1)
 
 def search_assessment(driver: WebDriver, name: str, wait: WebDriverWait):
-    driver.find_element(*dashboard.SEARCH).send_keys(name)
-    driver.find_element(*dashboard.SEARCH).send_keys(Keys.RETURN)
-    wait.until(EC.url_to_be(encoded_url(name)))
+    if not driver.current_url == encoded_url(name):
+        driver.get(encoded_url(name))
+        wait.until(EC.url_to_be(encoded_url(name)))
 
 
 def get_assessment_url(driver: WebDriver, name: str, wait: WebDriverWait):

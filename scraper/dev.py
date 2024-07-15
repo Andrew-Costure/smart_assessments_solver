@@ -18,7 +18,7 @@ def init(browser="chrome", landing_url: str = "https://portal.alnafi.com/enrollm
     else:
         raise NotImplementedError("It supports firefox and chrome only")
     
-    driver.implicitly_wait(10)  # should be no more than 10 seconds
+    driver.implicitly_wait(5)  # should be no more than 10 seconds
     
     COOKIE_FILE = Path(os.getenv("COOKIE_FILE")).absolute()
     USERNAME=os.getenv("USERNAME")
